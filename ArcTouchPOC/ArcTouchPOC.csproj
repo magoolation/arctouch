@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="DTOS\ConfigurationDTO.cs" />
     <Compile Include="DTOS\GenreListDTO.cs" />
     <Compile Include="DTOS\MovieDTO.cs" />
     <Compile Include="DTOS\SearchResultsDTO.cs" />
@@ -55,7 +56,9 @@
     <Compile Include="Models\UpcomingMovie.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ConfigurationRepository.cs" />
     <Compile Include="Repositories\GenreRepository.cs" />
+    <Compile Include="Repositories\IConfigurationRepository.cs" />
     <Compile Include="Repositories\IGenreRepository.cs" />
     <Compile Include="Repositories\IMoviesRepository.cs" />
     <Compile Include="Repositories\MovieRepository.cs" />

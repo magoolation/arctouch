@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace ArcTouchApp.Repositories
 {
-    interface IGenreRepository
+    public interface IGenreRepository
     {
-        Task<IEnumerable<Genre>> GetGenreListAsync();
+        Task<IEnumerable<GenreDTO>> GetGenreListAsync();
     }
 }

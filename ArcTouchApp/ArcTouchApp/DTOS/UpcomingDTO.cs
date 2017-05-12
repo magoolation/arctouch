@@ -9,7 +9,7 @@ namespace ArcTouchApp.DTOS
     public class UpcomingDTO
     {
         public int page { get; set; }
-        public UpcomingMovieDTO[] results { get; set; }
+        public MovieInfoDTO[] results { get; set; }
         public Dates dates { get; set; }
         public int total_pages { get; set; }
         public int total_results { get; set; }
@@ -21,7 +21,7 @@ namespace ArcTouchApp.DTOS
         public string minimum { get; set; }
     }
 
-    public class UpcomingMovieDTO
+    public class MovieInfoDTO
     {
         public string poster_path { get; set; }
         public bool adult { get; set; }

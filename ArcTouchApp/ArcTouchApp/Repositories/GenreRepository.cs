@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using ArcTouchApp.Models;
 using System.Collections.Generic;
 using System.Net.Http;
 using ArcTouchApp.DTOS;
 using Newtonsoft.Json;
-using System.Linq;
 using System.Diagnostics;
 
 namespace ArcTouchApp.Repositories
@@ -14,7 +12,7 @@ namespace ArcTouchApp.Repositories
     {
         private HttpClient _client = new HttpClient();
 
-        public async Task<IEnumerable<Genre>> GetGenreListAsync()
+        public async Task<IEnumerable<GenreDTO>> GetGenreListAsync()
         {            
             try
             {
@@ -23,13 +21,7 @@ namespace ArcTouchApp.Repositories
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    var genreList = JsonConvert.DeserializeObject<GenreListDTO>(content);
-
-                    return genreList.genres.Select(g => new Genre()
-                    {
-                        Id = g.id,
-                        Name = g.name
-                    });
+                    return JsonConvert.DeserializeObject<GenreListDTO>(content).genres;                        
                 }
             }
             catch (Exception ex)

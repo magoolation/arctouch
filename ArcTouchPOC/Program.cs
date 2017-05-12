@@ -11,18 +11,31 @@ namespace ArcTouchPOC
         private static MovieRepository _movieRepo;
         private static IEnumerable<Genre> _genres;
         private static GenreRepository _genreRepo;
+        private static ConfigurationRepository _configRepo;
 
         static void Main(string[] args)
         {
             _genreRepo = new GenreRepository();
             _genres = _genreRepo.GetGenreListAsync().Result;
             _movieRepo = new MovieRepository(_genres);
+            _configRepo = new ConfigurationRepository();
 
             Task.WaitAll(Genres(), Upcoming(),
                 GetMovie(),
-                SearchMovies());
+                SearchMovies(),
+                GetConfiguration());
             Console.WriteLine("Press ENTER to finish.");
             Console.ReadLine();
+        }
+
+        private static async Task GetConfiguration()
+        {
+            var config = await _configRepo.GetConfigurationsAsync();
+            Console.WriteLine($"{config.images.base_url}");
+            foreach (var size in config.images.poster_sizes)
+            {
+                Console.WriteLine($"{size}");
+            }
         }
 
         private static async Task Genres()
@@ -37,7 +50,7 @@ namespace ArcTouchPOC
             }
         }
 
-        private static async Task Upcoming()
+        private static async Task           ()
         {
             Console.WriteLine();
             Console.WriteLine("Get Upcoming movies");

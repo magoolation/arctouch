@@ -4,12 +4,12 @@
     public class SearchResultsDTO
     {
         public int page { get; set; }
-        public SearchResult[] results { get; set; }
+        public SearchResultDTO[] results { get; set; }
         public int total_results { get; set; }
         public int total_pages { get; set; }
     }
 
-    public class SearchResult
+    public class SearchResultDTO
     {
         public string poster_path { get; set; }
         public bool adult { get; set; }

@@ -11,6 +11,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcTouchApp.iOS", "ArcTouch
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcTouchPOC", "ArcTouchPOC\ArcTouchPOC.csproj", "{152A80E6-FB34-44E8-82C0-8ACB6E1D3B5D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Screenshots", "Screenshots", "{7037C317-B581-4F27-BB45-DE8AE652A5CF}"
+	ProjectSection(SolutionItems) = preProject
+		Screenshots\IMG_0049.PNG = Screenshots\IMG_0049.PNG
+		Screenshots\IMG_0050.PNG = Screenshots\IMG_0050.PNG
+		Screenshots\IMG_0051.PNG = Screenshots\IMG_0051.PNG
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU

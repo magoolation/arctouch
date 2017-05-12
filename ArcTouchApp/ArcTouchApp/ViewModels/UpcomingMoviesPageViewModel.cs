@@ -4,6 +4,7 @@ using ArcTouchApp.Services;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Prism.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,13 +15,7 @@ namespace ArcTouchApp.ViewModels
     public class UpcomingMoviesPageViewModel : BindableBase, INavigationAware
     {
         private readonly IMovieService _movieService;
-
-        private MovieInfo _selectedMovie;
-        public MovieInfo SelectedMovie
-        {
-            get { return _selectedMovie; }
-            set { SetProperty(ref _selectedMovie, value); }
-        }
+        private readonly IPageDialogService _pageDialog;        
         
         public DelegateCommand<MovieInfo> GoToMovie { get; set; }
 
@@ -31,9 +26,10 @@ namespace ArcTouchApp.ViewModels
             set { SetProperty(ref _movies, value); }
         }
 
-        public UpcomingMoviesPageViewModel(IMovieService movieService, INavigationService navigationService)
+        public UpcomingMoviesPageViewModel(IMovieService movieService, INavigationService navigationService, IPageDialogService pageDialog)
         {
             _movieService = movieService;
+            _pageDialog = pageDialog;
 
             GoToMovie = new DelegateCommand<MovieInfo>((movie) =>
             {
@@ -57,6 +53,10 @@ namespace ArcTouchApp.ViewModels
                     foreach (var movie in movies)
                         _movies.Add(movie);
                 }
+                else
+                {
+                    _pageDialog.DisplayAlertAsync("Message", "Sorry. No more movies to show!","Ok");
+                }
             }
         }
         
@@ -79,7 +79,15 @@ namespace ArcTouchApp.ViewModels
             else
             {
                 var movies = await _movieService.GetUpcomingMoviesAsync(++_currentPage).ConfigureAwait(false);
-                UpcomingMovies = new ObservableCollection<MovieInfo>(movies);
+                if (movies != null && movies.Count() > 0)
+                {
+                    UpcomingMovies = new ObservableCollection<MovieInfo>(movies);
+                }
+                else
+                {
+                    _pageDialog.DisplayAlertAsync("Message", "Sorry. No upcoming movies to show.", "Ok");
+                }
+                
             }
         }
     }

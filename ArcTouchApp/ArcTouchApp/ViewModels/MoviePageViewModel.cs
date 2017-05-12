@@ -38,7 +38,7 @@ namespace ArcTouchApp.ViewModels
             if(parameters.ContainsKey("id"))
             {
                 var id = Convert.ToInt32(parameters["id"]);
-                Movie = await _movieService.GetMovieAsync(id);
+                Movie = await _movieService.GetMovieAsync(id).ConfigureAwait(false);
             }
         }
     }

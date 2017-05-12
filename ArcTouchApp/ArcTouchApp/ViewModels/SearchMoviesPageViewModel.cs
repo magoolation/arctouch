@@ -3,24 +3,21 @@ using ArcTouchApp.Services;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace ArcTouchApp.ViewModels
 {
-    public class SeachMoviePageViewModel : BindableBase
+    public class SearchMoviesPageViewModel : BindableBase
     {
         private readonly IMovieService _movieService;
 
-        public SeachMoviePageViewModel(IMovieService movieService, INavigationService navigationService)
+        public SearchMoviesPageViewModel(IMovieService movieService, INavigationService navigationService)
         {
             _movieService = movieService;
 
             Search = new DelegateCommand(async () =>
             {
-                Movies = new ObservableCollection<MovieInfo>(await _movieService.GetMoviesByTitleAsync(SearchCriteria));
+                Movies = new ObservableCollection<MovieInfo>(await _movieService.GetMoviesByTitleAsync(SearchCriteria).ConfigureAwait(false));
             });
 
             GoToMovie = new DelegateCommand<MovieInfo>(movie =>

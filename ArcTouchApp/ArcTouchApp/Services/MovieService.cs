@@ -27,9 +27,9 @@ namespace ArcTouchApp.Services
         public async Task<Movie> GetMovieAsync(int id)
         {
             if (_genres == null)
-                _genres = await _genreRepository.GetGenreListAsync();
+                _genres = await _genreRepository.GetGenreListAsync().ConfigureAwait(false);
 
-            var dto = await _movieRepository.GetMovieAsync(id);
+            var dto = await _movieRepository.GetMovieAsync(id).ConfigureAwait(false);
             if (dto != null)
             {
                 return new Movie()
@@ -47,9 +47,9 @@ namespace ArcTouchApp.Services
         public async Task<IEnumerable<MovieInfo>> GetMoviesByTitleAsync(string title)
         {
             if (_genres == null)
-                _genres = await _genreRepository.GetGenreListAsync();
+                _genres = await _genreRepository.GetGenreListAsync().ConfigureAwait(false);
 
-            var result = await _movieRepository.SearchMovieByTitle(title);
+            var result = await _movieRepository.SearchMovieByTitle(title).ConfigureAwait(false);
             if (result != null)
             {
                 return result.Select(r => new MovieInfo()
@@ -67,9 +67,9 @@ namespace ArcTouchApp.Services
         public async Task<IEnumerable<MovieInfo>> GetUpcomingMoviesAsync(int page = 1)
         {
             if (_genres == null)
-                _genres = await _genreRepository.GetGenreListAsync();
+                _genres = await _genreRepository.GetGenreListAsync().ConfigureAwait(false);
 
-            var movies = await _movieRepository.GetUpcomingMoviesAsync(page);
+            var movies = await _movieRepository.GetUpcomingMoviesAsync(page).ConfigureAwait(false);
             if (movies != null)
             {
                 return movies.Select(movie => new MovieInfo()

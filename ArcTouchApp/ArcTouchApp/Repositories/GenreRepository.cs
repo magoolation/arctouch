@@ -5,12 +5,13 @@ using System.Net.Http;
 using ArcTouchApp.DTOS;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using ModernHttpClient;
 
 namespace ArcTouchApp.Repositories
 {
     public class GenreRepository : IGenreRepository
     {
-        private HttpClient _client = new HttpClient();
+        private HttpClient _client = new HttpClient(new NativeMessageHandler());
 
         public async Task<IEnumerable<GenreDTO>> GetGenreListAsync()
         {            

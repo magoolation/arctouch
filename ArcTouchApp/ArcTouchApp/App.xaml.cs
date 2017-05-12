@@ -36,16 +36,16 @@ namespace ArcTouchApp
             var builder = new ContainerBuilder();
 
 #if DEBUG_
-            builder.RegisterType<MockMovieRepository>().AsImplementedInterfaces().SingleInstance();
-            builder.RegisterType<MockGenreRepository>().AsImplementedInterfaces().SingleInstance();
-            builder.RegisterType<MockConfigurationRepository>().AsImplementedInterfaces().SingleInstance();
+            builder.RegisterType<MockMovieRepository>().AsImplementedInterfaces();
+            builder.RegisterType<MockGenreRepository>().AsImplementedInterfaces();
+            builder.RegisterType<MockConfigurationRepository>().AsImplementedInterfaces();
 #else
-            builder.RegisterType<MovieRepository>().AsImplementedInterfaces().SingleInstance();
-            builder.RegisterType<GenreRepository>().AsImplementedInterfaces().SingleInstance();
-            builder.RegisterType<ConfigurationRepository>().AsImplementedInterfaces().SingleInstance();
+            builder.RegisterType<MovieRepository>().AsImplementedInterfaces();
+            builder.RegisterType<GenreRepository>().AsImplementedInterfaces();
+            builder.RegisterType<ConfigurationRepository>().AsImplementedInterfaces();
 #endif
-            builder.RegisterType<ImageService>().AsImplementedInterfaces().SingleInstance();
-            builder.RegisterType<MovieService>().AsImplementedInterfaces().SingleInstance();
+            builder.RegisterType<ImageService>().AsImplementedInterfaces();
+            builder.RegisterType<MovieService>().AsImplementedInterfaces();
 
             return builder.Build();
         }
@@ -56,7 +56,7 @@ namespace ArcTouchApp
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<UpcomingMoviesPage>();
             Container.RegisterTypeForNavigation<MoviePage>();
-            Container.RegisterTypeForNavigation<SeachMoviePage>();
+            Container.RegisterTypeForNavigation<SearchMoviesPage>();
             Container.RegisterTypeForNavigation<MainMenuPage>();
         }
     }

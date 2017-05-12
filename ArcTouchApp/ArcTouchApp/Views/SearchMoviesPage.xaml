@@ -5,7 +5,7 @@
              xmlns:c="clr-namespace:ArcTouchApp.Converters"
              xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="ArcTouchApp.Views.SeachMoviePage" Title="Find a movie">
+             x:Class="ArcTouchApp.Views.SearchMoviesPage" Title="Find a movie">
     <ContentPage.Resources>
         <ResourceDictionary>
             <c:ItemTappedEventArgsConverter x:Key="ItemConverter" />

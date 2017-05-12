@@ -3,12 +3,13 @@ using System.Threading.Tasks;
 using ArcTouchPOC.DTOS;
 using System.Net.Http;
 using Newtonsoft.Json;
+using ModernHttpClient;
 
 namespace ArcTouchApp.Repositories
 {
     public class ConfigurationRepository : IConfigurationRepository
     {
-        private HttpClient _client = new HttpClient();
+        private HttpClient _client = new HttpClient(new NativeMessageHandler());
 
         public async Task<ConfigurationsDTO> GetConfigurationsAsync()
         {

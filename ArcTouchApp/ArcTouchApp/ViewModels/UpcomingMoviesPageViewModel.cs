@@ -78,7 +78,7 @@ namespace ArcTouchApp.ViewModels
             }
             else
             {
-                var movies = await _movieService.GetUpcomingMoviesAsync(++_currentPage);
+                var movies = await _movieService.GetUpcomingMoviesAsync(++_currentPage).ConfigureAwait(false);
                 UpcomingMovies = new ObservableCollection<MovieInfo>(movies);
             }
         }

@@ -2,9 +2,9 @@
 
 namespace ArcTouchApp.Views
 {
-    public partial class SeachMoviePage : ContentPage
+    public partial class SearchMoviesPage : ContentPage
     {
-        public SeachMoviePage()
+        public SearchMoviesPage()
         {
             InitializeComponent();
         }

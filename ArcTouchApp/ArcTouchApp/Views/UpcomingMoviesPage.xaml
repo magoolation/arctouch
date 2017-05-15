@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             xmlns:c="clr-namespace:ArcTouchApp.Converters"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ArcTouchApp.Views.UpcomingMoviesPage" Title="Upcoming movies">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <c:ItemTappedEventArgsConverter x:Key="ItemTappedConverter" />
+            <c:ItemVisibilityEventArgsConverter x:Key="ItemVisibilityConverter" />
+            <c:MovieInfoConverter x:Key="MovieInfoConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <ListView ItemsSource="{Binding UpcomingMovies}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell Text="{Binding Title}" Detail="{Binding ., Converter={StaticResource MovieInfoConverter}}" ImageSource="{Binding ImageUrl}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                <b:EventToCommandBehavior EventName="ItemTapped" Command="{Binding GoToMovie }"                                           
+                                          EventArgsConverter="{StaticResource ItemTappedConverter}" />
+                <b:EventToCommandBehavior EventName="ItemAppearing" Command="{Binding InfinityScroll}"
+                                          EventArgsConverter="{StaticResource ItemVisibilityConverter}" />
+            </ListView.Behaviors>
+        </ListView>
+    </StackLayout>
+</ContentPage>

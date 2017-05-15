@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ArcTouchApp.DTOS
 {
-    public class UpcomingDTO
+    public class UpcomingMoviesDTO
     {
         public int page { get; set; }
         public MovieInfoDTO[] results { get; set; }

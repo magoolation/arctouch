@@ -1,8 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
-using ArcTouchPOC.DTOS;
+﻿using System.Threading.Tasks;
 using Newtonsoft.Json;
-using PCLStorage;
+using ArcTouchApp.DTOS;
 
 namespace ArcTouchApp.Repositories
 {

@@ -19,13 +19,13 @@ namespace ArcTouchApp.Repositories
         public async Task<IEnumerable<MovieInfoDTO>> GetUpcomingMoviesAsync(int page = 1)
         {
             string content = ResourceHelper.LoadFile("upcoming.json");
-            return JsonConvert.DeserializeObject<UpcomingDTO>(content).results;
+            return JsonConvert.DeserializeObject<UpcomingMoviesDTO>(content).results;
         }
 
         public async Task<IEnumerable<SearchResultDTO>> SearchMovieByTitle(string title)
         {
             string content = ResourceHelper.LoadFile("search.json");
-            return JsonConvert.DeserializeObject<SearchResultsDTO>(content).results;
+            return JsonConvert.DeserializeObject<SearchMovieResultsDTO>(content).results;
         }
     }
 }

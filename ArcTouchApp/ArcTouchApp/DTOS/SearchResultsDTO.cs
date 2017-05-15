@@ -1,7 +1,7 @@
 ﻿namespace ArcTouchApp.DTOS
 {
 
-    public class SearchResultsDTO
+    public class SearchMovieResultsDTO
     {
         public int page { get; set; }
         public SearchResultDTO[] results { get; set; }

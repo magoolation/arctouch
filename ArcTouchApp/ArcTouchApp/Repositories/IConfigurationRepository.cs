@@ -1,4 +1,4 @@
-﻿using ArcTouchPOC.DTOS;
+﻿using ArcTouchApp.DTOS;
 using System.Threading.Tasks;
 
 namespace ArcTouchApp.Repositories

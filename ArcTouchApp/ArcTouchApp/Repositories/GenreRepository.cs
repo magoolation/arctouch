@@ -17,7 +17,7 @@ namespace ArcTouchApp.Repositories
         {            
             try
             {
-                var url = new Uri($"{Constants.API_URL}/genre/movie/list?{Constants.API_KEY}");
+                var url = new Uri($"{Constants.API_URL}/genre/movie/list?{Constants.API_PARAMETER}");
                 var response = await _client.GetAsync(url);
                 if (response.IsSuccessStatusCode)
                 {

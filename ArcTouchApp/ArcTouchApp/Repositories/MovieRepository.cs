@@ -14,7 +14,7 @@ namespace ArcTouchApp.Repositories
 
         public async Task<MovieDTO> GetMovieAsync(int id)
         {
-            var url = new Uri($"{Constants.API_URL}/movie/{id}?{Constants.API_KEY}");
+            var url = new Uri($"{Constants.API_URL}/movie/{id}?{Constants.API_PARAMETER}");
             var response = await _client.GetAsync(url).ConfigureAwait(false);
             if(response.IsSuccessStatusCode)
             {
@@ -26,12 +26,12 @@ namespace ArcTouchApp.Repositories
 
         public async Task<IEnumerable<MovieInfoDTO>> GetUpcomingMoviesAsync(int page = 1)
         {
-            var url = $"{Constants.API_URL}/movie/upcoming?{Constants.API_KEY}&page={page}";
+            var url = $"{Constants.API_URL}/movie/upcoming?{Constants.API_PARAMETER}&page={page}";
             var response = await _client.GetAsync(new Uri(url)).ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<UpcomingDTO>(content).results;                    
+                return JsonConvert.DeserializeObject<UpcomingMoviesDTO>(content).results;                    
             }
             return null;
         }
@@ -40,12 +40,12 @@ namespace ArcTouchApp.Repositories
 
         public async Task<IEnumerable<SearchResultDTO>> SearchMovieByTitle(string title)
         {
-            var url = new Uri($"{Constants.API_URL}/search/movie?{Constants.API_KEY}&query={title}");            
+            var url = new Uri($"{Constants.API_URL}/search/movie?{Constants.API_PARAMETER}&query={title}");            
             var response = await _client.GetAsync(url).ConfigureAwait(false);
             if(response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<SearchResultsDTO>(content).results;                
+                return JsonConvert.DeserializeObject<SearchMovieResultsDTO>(content).results;                
             }
             return null;
         }

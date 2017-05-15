@@ -1,7 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using ArcTouchApp.Repositories;
-using ArcTouchPOC.DTOS;
+using ArcTouchApp.DTOS;
 
 namespace ArcTouchApp.Services
 {

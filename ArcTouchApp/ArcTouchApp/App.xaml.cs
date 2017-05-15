@@ -9,6 +9,7 @@ using System;
 using ArcTouchApp.Services;
 using System.Threading.Tasks;
 using Prism.Navigation;
+using Refit;
 
 namespace ArcTouchApp
 {
@@ -35,17 +36,16 @@ namespace ArcTouchApp
         {
             var builder = new ContainerBuilder();
 
-#if DEBUG_
-            builder.RegisterType<MockMovieRepository>().AsImplementedInterfaces();
-            builder.RegisterType<MockGenreRepository>().AsImplementedInterfaces();
-            builder.RegisterType<MockConfigurationRepository>().AsImplementedInterfaces();
-#else
-            builder.RegisterType<MovieRepository>().AsImplementedInterfaces();
-            builder.RegisterType<GenreRepository>().AsImplementedInterfaces();
-            builder.RegisterType<ConfigurationRepository>().AsImplementedInterfaces();
-#endif
-            builder.RegisterType<ImageService>().AsImplementedInterfaces();
-            builder.RegisterType<MovieService>().AsImplementedInterfaces();
+            builder.RegisterType<MovieRepository>().AsImplementedInterfaces().SingleInstance();
+            builder.RegisterType<GenreRepository>().AsImplementedInterfaces().SingleInstance();
+            builder.RegisterType<ConfigurationRepository>().AsImplementedInterfaces().SingleInstance();
+            builder.RegisterType<ImageService>().AsImplementedInterfaces().SingleInstance();
+            builder.RegisterType<MovieService>().AsImplementedInterfaces().SingleInstance();
+
+            builder.Register(c => RestService.For<ITheMovieDatabaseRepository>(Constants.API_URL))
+                .AsImplementedInterfaces()
+                .SingleInstance();
+                
 
             return builder.Build();
         }

@@ -1,4 +1,4 @@
-﻿namespace ArcTouchPOC.DTOS
+﻿namespace ArcTouchApp.DTOS
 {
 
     public class ConfigurationsDTO

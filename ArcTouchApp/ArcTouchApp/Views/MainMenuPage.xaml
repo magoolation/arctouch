@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                  prism:ViewModelLocator.AutowireViewModel="True"
+                  x:Class="ArcTouchApp.Views.MainMenuPage">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu">
+            <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Orientation="Vertical"
+                         BackgroundColor="Black" HeightRequest="300" WidthRequest="300">
+                <Button Text="upcoming movies" Command="{Binding Goto}" CommandParameter="UpcomingMoviesPage"
+                        HeightRequest="60"
+                        BackgroundColor="Black" TextColor="White" FontAttributes="Bold" />
+                <Button Text="Find a movie" Command="{Binding Goto}" CommandParameter="SearchMoviesPage"
+                        HeightRequest="60"
+                        BackgroundColor="Black" TextColor="White" FontAttributes="Bold" />
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>
